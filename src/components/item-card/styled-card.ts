@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const ItemCard = styled.article`
+export const Card = styled.article`
   background: var(--item-card-backgorund-color);
   color: var(--item-card-color);
   width: 100%;
-  min-height: 20%;
+  height: fit-content;
   border-radius: 25px;
   box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.28);
   padding: 7.5%;

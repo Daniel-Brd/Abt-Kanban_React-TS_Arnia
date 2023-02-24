@@ -24,5 +24,5 @@ export const Main = styled.main`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 2.5%;
   padding: 2.5% 5%;
-  min-height: 100vh;
+  height: 100vh;
 `;

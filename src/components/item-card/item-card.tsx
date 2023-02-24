@@ -1,15 +1,15 @@
-import { ItemCard } from "./styled-item-card";
+import { Card } from "./styled-card";
 
-const Item = () => {
+type Content = {
+  content: JSX.Element
+}
+
+const ItemCard = ({ content }: Content) => {
   return (
-    <ItemCard>
-      <h1>aaaaaaaaaaaaaaaaa</h1>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi cupiditate nulla quam
-        nesciunt!
-      </p>
-    </ItemCard>
+    <Card>
+      {content}
+    </Card>
   );
 };
 
-export default Item;
+export default ItemCard;

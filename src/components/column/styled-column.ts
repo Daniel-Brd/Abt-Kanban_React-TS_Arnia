@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Column = styled.section`
+export const ColumnCard = styled.section`
   background-color: var(--column-background-color);
   border-radius: 7px;
   padding: 7.5%;
@@ -10,6 +10,8 @@ export const Column = styled.section`
   overflow-y: auto;
   box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.28);
   text-align: center;
+  max-height: 100%;
+
 
   ::-webkit-scrollbar {
     display: none;
