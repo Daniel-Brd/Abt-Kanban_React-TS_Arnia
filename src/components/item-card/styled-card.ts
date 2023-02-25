@@ -7,7 +7,7 @@ export const Card = styled.article`
   height: fit-content;
   border-radius: 25px;
   box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.28);
-  padding: 7.5%;
+  padding: 5%;
   text-align: left;
 
   h1 {

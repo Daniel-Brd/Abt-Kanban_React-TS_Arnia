@@ -5,15 +5,10 @@ import Item from "./components/item/item";
 import Form from "./components/form/form";
 import AddItem from "./components/add-item-form/add-item-form";
 import { GlobalStyle, Main } from "./styled";
-
+import App from "./App";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <GlobalStyle />
-    <Main>
-      <Column title="Novo" content={< Form content={<AddItem />} />} />
-      <Column title="To do" content={<Item />} />
-      <Column title="Doing" content={<Item />} />
-      <Column title="Done" content={<Item />} />
-    </Main>
+    <App />
   </React.StrictMode>
 );

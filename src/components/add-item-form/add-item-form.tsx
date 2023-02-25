@@ -1,19 +1,43 @@
+import { useState } from "react";
+
+import { ItemProps } from "../../types/item-types";
 
 const AddItem = () => {
-    return (<>
-        <label>
-            <input id="title" type='text' placeholder="Título"></input>
-        </label>
-        <label>
-            <textarea placeholder="Conteúdo" rows={5}></textarea>
-        </label>
-        <nav>
-            <button>esquerda</button>
-            <button>adicionar</button>
-            <button>direita</button>
-        </nav>
-    </>
-    )
-}
+  const [currentItem, setCurrentItem] = useState<ItemProps>({
+    title: "",
+    text: "",
+  });
 
-export default AddItem
+  return (
+    <>
+      <label>
+        <input
+          id="title"
+          type="text"
+          placeholder="Título"
+          value={currentItem.title}
+          onChange={(event) => {
+            setCurrentItem((prev) => ({ ...prev, title: event.target.value }));
+          }}
+        ></input>
+      </label>
+      <label>
+        <textarea
+          placeholder="Conteúdo"
+          rows={5}
+          value={currentItem.text}
+          onChange={(event) => {
+            setCurrentItem((prev) => ({ ...prev, text: event.target.value }));
+          }}
+        ></textarea>
+      </label>
+      <nav>
+        <button>
+          <img src="src/assets/images/plus.svg" alt="" />
+        </button>
+      </nav>
+    </>
+  );
+};
+
+export default AddItem;
