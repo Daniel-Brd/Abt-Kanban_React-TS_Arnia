@@ -1,11 +1,15 @@
 import { useState } from "react";
-
 import { ItemProps } from "../../types/item-types";
 
-const AddItem = () => {
-  const [currentItem, setCurrentItem] = useState<ItemProps>({
+type AddItemProps = {
+  handleAddItem: (newItem: ItemProps) => React.MouseEventHandler
+}
+
+const AddItem: React.FC<AddItemProps> = ({ handleAddItem }) => {
+  const [currentItem, setCurrentItem] = useState({
     title: "",
     text: "",
+    column: "to do"
   });
 
   return (
@@ -32,7 +36,7 @@ const AddItem = () => {
         ></textarea>
       </label>
       <nav>
-        <button>
+        <button onClick={handleAddItem(currentItem)}>
           <img src="src/assets/images/plus.svg" alt="" />
         </button>
       </nav>

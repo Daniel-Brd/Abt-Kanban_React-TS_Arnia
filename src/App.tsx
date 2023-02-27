@@ -1,21 +1,38 @@
-import { useState } from "react";
 import { Main } from "./styled";
-import Column from "./components/column/column";
-import Form from "./components/form/form";
-import Item from "./components/item/item";
-import AddItem from "./components/add-item-form/add-item-form";
 import { ItemProps } from "./types/item-types";
+import Column from "./components/column/column";
+import ItemsCards from "./components/item-card/item-card";
+import Form from "./components/form/form";
+import AddItem from "./components/add-item-form/add-item-form";
+import { useState } from "react";
+
+
 
 function App() {
+
+  const [items, setItems] = useState<ItemProps[]>([])
+
+  const createItem = (newItem: ItemProps) => {
+    setItems((prev) => ([
+      ...prev, newItem
+    ]))
+  }
+
   return (
     <Main>
-      <Column title="Novo" content={<Form content={<AddItem />} />} />
+      <Column title="Novo" content={<Form content={<AddItem handleAddItem={createItem} />} />} />
       <Column
         title="To do"
-        content={<Item title="lorem ipsum" text="lorem ipsum solor sitamet" />}
+        content={<ItemsCards items={items.filter(item => item.column === "to do")} />}
       />
-      {/* <Column title="Doing" content={<Item />} />
-      <Column title="Done" content={<Item />} /> */}
+      <Column
+        title="doing"
+        content={<ItemsCards items={items.filter(item => item.column === "doing")} />}
+      />
+      <Column
+        title="done"
+        content={<ItemsCards items={items.filter(item => item.column === "done")} />}
+      />
     </Main>
   );
 }

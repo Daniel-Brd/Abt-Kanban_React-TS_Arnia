@@ -1,16 +1,16 @@
 import { ColumnCard } from "./styled-column";
-import ItemCard from "../item-card/item-card";
 
 type ColumnProps = {
   title: string;
-  content: JSX.Element;
+  content: React.ReactNode;
 };
 
-const Column = ({ title, content }: ColumnProps) => {
+const Column: React.FC<ColumnProps> = ({ title, content }) => {
+
   return (
     <ColumnCard>
       <h1>{title}</h1>
-      <ItemCard content={content} />
+      {content}
     </ColumnCard>
   );
 };
