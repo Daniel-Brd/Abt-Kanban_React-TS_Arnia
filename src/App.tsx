@@ -16,6 +16,17 @@ function App() {
     setItems((prev) => ([
       ...prev, newItem
     ]))
+    console.log(items);
+  }
+
+  function updateItems(updatedItem: ItemProps) {
+    const _updatedItems = items.map((item) => item.id === updatedItem.id ? updatedItem : item)
+    setItems(_updatedItems)
+  }
+
+  function deleteItem(deletedItem: ItemProps) {
+    const _updatedItems = items.filter((item) => item.id !== deletedItem.id)
+    setItems(_updatedItems)
   }
 
   return (
@@ -23,15 +34,15 @@ function App() {
       <Column title="Novo" content={<Form content={<AddItem handleAddItem={createItem} />} />} />
       <Column
         title="To do"
-        content={<ItemsCards items={items.filter(item => item.column === "to do")} />}
+        content={<ItemsCards items={items.filter(item => item.column === "to do")} onUpdateItem={updateItems} onDeleteItem={deleteItem} />}
       />
       <Column
         title="doing"
-        content={<ItemsCards items={items.filter(item => item.column === "doing")} />}
+        content={<ItemsCards items={items.filter(item => item.column === "doing")} onUpdateItem={updateItems} onDeleteItem={deleteItem} />}
       />
       <Column
         title="done"
-        content={<ItemsCards items={items.filter(item => item.column === "done")} />}
+        content={<ItemsCards items={items.filter(item => item.column === "done")} onUpdateItem={updateItems} onDeleteItem={deleteItem} />}
       />
     </Main>
   );

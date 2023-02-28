@@ -6,7 +6,9 @@ type AddItemProps = {
 }
 
 const AddItem: React.FC<AddItemProps> = ({ handleAddItem }) => {
+
   const [currentItem, setCurrentItem] = useState({
+    id: 0,
     title: "",
     text: "",
     column: "to do"
@@ -36,7 +38,11 @@ const AddItem: React.FC<AddItemProps> = ({ handleAddItem }) => {
         ></textarea>
       </label>
       <nav>
-        <button onClick={handleAddItem(currentItem)}>
+        <button onClick={() => {
+          setCurrentItem((prev) => ({ ...prev, id: prev.id + 1 }))
+          handleAddItem(currentItem)
+          setCurrentItem((prev) => ({ ...prev, title: '', text: '' }))
+        }}>
           <img src="src/assets/images/plus.svg" alt="" />
         </button>
       </nav>
