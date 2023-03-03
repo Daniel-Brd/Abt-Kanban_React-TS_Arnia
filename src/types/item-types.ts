@@ -1,6 +1,6 @@
 
 export type ItemProps = {
-  id: number;
+  id: string;
   title: string;
   text: string;
   column?: string;

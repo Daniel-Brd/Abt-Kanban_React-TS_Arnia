@@ -1,18 +1,21 @@
 import { useState } from "react";
 import { ItemProps } from "../../types/item-types";
+import uuid from 'react-uuid'
 
 type AddItemProps = {
-  handleAddItem: (newItem: ItemProps) => React.MouseEventHandler
+  handleAddItem: (newItem: ItemProps) => void
 }
 
 const AddItem: React.FC<AddItemProps> = ({ handleAddItem }) => {
 
   const [currentItem, setCurrentItem] = useState({
-    id: 0,
+    id: uuid(),
     title: "",
     text: "",
     column: "to do"
   });
+
+  const { id, title, text, column } = currentItem
 
   return (
     <>
@@ -21,7 +24,7 @@ const AddItem: React.FC<AddItemProps> = ({ handleAddItem }) => {
           id="title"
           type="text"
           placeholder="Título"
-          value={currentItem.title}
+          value={title}
           onChange={(event) => {
             setCurrentItem((prev) => ({ ...prev, title: event.target.value }));
           }}
@@ -31,7 +34,7 @@ const AddItem: React.FC<AddItemProps> = ({ handleAddItem }) => {
         <textarea
           placeholder="Conteúdo"
           rows={5}
-          value={currentItem.text}
+          value={text}
           onChange={(event) => {
             setCurrentItem((prev) => ({ ...prev, text: event.target.value }));
           }}
@@ -39,9 +42,8 @@ const AddItem: React.FC<AddItemProps> = ({ handleAddItem }) => {
       </label>
       <nav>
         <button onClick={() => {
-          setCurrentItem((prev) => ({ ...prev, id: prev.id + 1 }))
           handleAddItem(currentItem)
-          setCurrentItem((prev) => ({ ...prev, title: '', text: '' }))
+          setCurrentItem((prev) => ({ ...prev, id: uuid(), title: '', text: '' }))
         }}>
           <img src="src/assets/images/plus.svg" alt="" />
         </button>

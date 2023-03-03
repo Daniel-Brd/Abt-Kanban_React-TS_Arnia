@@ -12,8 +12,8 @@ type CardProps = {
 const ItemsCards: React.FC<CardProps> = ({ items, onUpdateItem, onDeleteItem }) => {
   return (
     <>
-      {items.map((item, index: number) => (
-        <div key={index}>
+      {items.map((item) => (
+        <div key={item.id}>
           <Card>
             <Item item={item} onUpdateItem={onUpdateItem} onDeleteItem={onDeleteItem} />
           </Card>

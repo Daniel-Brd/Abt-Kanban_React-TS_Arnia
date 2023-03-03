@@ -1,14 +1,15 @@
 import { Formulary } from "./styled-form"
 import { Card } from "../item-card/styled-card"
-type Content = {
-    content: JSX.Element
+import { ReactNode } from "react"
+type FormProps = {
+    children: ReactNode
 }
 
-const Form = ({ content }: Content) => {
+const Form = ({ children }: FormProps) => {
     return (
         <Card>
             <Formulary>
-                {content}
+                {children}
             </Formulary>
         </Card>
     )

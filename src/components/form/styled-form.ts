@@ -32,4 +32,8 @@ export const Formulary = styled.section`
     display: flex;
     justify-content: space-around;
   }
+
+  button>img{
+    cursor: pointer;
+  }
 `;

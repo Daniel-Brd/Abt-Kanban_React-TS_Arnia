@@ -1,16 +1,17 @@
+import { ReactNode } from "react";
 import { ColumnCard } from "./styled-column";
 
 type ColumnProps = {
   title: string;
-  content: React.ReactNode;
+  children: ReactNode;
 };
 
-const Column: React.FC<ColumnProps> = ({ title, content }) => {
+const Column: React.FC<ColumnProps> = ({ title, children }) => {
 
   return (
     <ColumnCard>
       <h1>{title}</h1>
-      {content}
+      {children}
     </ColumnCard>
   );
 };
